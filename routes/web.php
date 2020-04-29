@@ -22,6 +22,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/testhome', 'HomeController@test')->name('testhome');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('main', 'mainController@index')->name('main');
+Route::get('trending', 'trendingController@index')->name('trending');
+
+
 
 Route::resource('products', 'productController');
 

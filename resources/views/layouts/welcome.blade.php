@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-
+@yield('nav')
 <head>
 <title>Burb</title>
   <meta charset="utf-8">
@@ -13,7 +13,7 @@
 
 <body>
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
+  <div class="container-fluid" >
     <div class="navbar-header">
       <a class="navbar-brand" href="{{ route('main') }}">Burb.com</a>
     </div>
@@ -33,11 +33,6 @@
 </div>
 
 </body>
-  <div class="content-wrapper">
-	@yield('content')
-  </div>
-
-
 
 
 

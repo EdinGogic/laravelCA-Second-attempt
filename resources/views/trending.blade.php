@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-
+@yield('nav')
 <head>
 <title>Burb</title>
   <meta charset="utf-8">
@@ -13,7 +13,7 @@
 
 <body>
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
+  <div class="container-fluid" >
     <div class="navbar-header">
       <a class="navbar-brand" href="{{ route('main') }}">Burb.com</a>
     </div>
@@ -28,16 +28,11 @@
 </nav>
   
 <div class="container">
-  <h3>Inverted Navbar</h3>
-  <p>An inverted navbar is black instead of gray.</p>
+  <h3>Trending Posts</h3>
+  <p></p>
 </div>
 
 </body>
-  <div class="content-wrapper">
-	@yield('content')
-  </div>
-
-
 
 
 
