@@ -18,9 +18,7 @@
       <a class="navbar-brand" href="{{ route('main') }}">Burb.com</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="{{ route('trending') }}">Trending</a></li>
-      <li><a href="#">New</a></li>
-      <li><a href="#">Pinned</a></li>
+      <li><a href="{{ route('trending') }}">Community Posts</a></li>
       <li><a href="#">Products</a></li>
     </ul>
 	@include ('layouts.navAuth')
@@ -28,8 +26,8 @@
 </nav>
   
 <div class="container">
-  <h3>Inverted Navbar</h3>
-  <p>An inverted navbar is black instead of gray.</p>
+  <h3>Welcome to my project!</h3>
+  <h4>To post comments in the community form, make sure you're logged in. The reasoning behind this is post moderation. If the post is not linked to the user then people may absuse the form!</h4>
 </div>
 
 </body>

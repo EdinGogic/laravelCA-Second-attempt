@@ -9,7 +9,10 @@ class trendingController extends Controller
 
     public function index()
     {
-        return view('trending');
+		$posts = Post::get();
+		print_r($post);
+		return view('trending');
+
     }
 	
 	public function create()

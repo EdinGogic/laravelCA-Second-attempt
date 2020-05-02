@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+   return view('welcome');
 });
 
 Auth::routes();
@@ -26,11 +26,16 @@ Route::get('main', 'mainController@index')->name('main');
 //Route::get('trending', 'trendingController@index')->name('trending');
 Route::get('create', 'trendingController@create')->name('create');
 
-Route::get('trending', [
-	'uses' => 'trendingController@index',
-	'as' => 'trending'
-]);
+//Route::get('trending', [
+//	'uses' => 'PostController@getFeed',
+//	'as' => 'trending'
+//]);
 
+Route::get('trending', [
+    'uses' => 'postController@getDashboard',
+    'as' => 'trending',
+
+]);
 
 Route::post('createpost', [
 	'uses' => 'PostController@postCreatePost',
