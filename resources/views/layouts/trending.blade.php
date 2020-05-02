@@ -51,23 +51,10 @@
     <!-- End Left Column -->
     </div>
     
-    <!-- Middle Column -->
-    <div class="w3-col m7">
-    
-<section class="row new-post">
-        <div class="col-md-6 col-md-offset-3">
-		
-            <header><h3>What do you have to say?</h3></header>
-            <form action="{{route('post.create')}}" method="post">
-                <div class="form-group">
-                    <textarea class="form-control" name="body" id="new-post" rows="5" placeholder="Your Post"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Create Post</button>
-                <input type="hidden" value="{{ Session::token() }}" name="_token">
-            </form>
-        </div>
-    </section>
-      
+
+    <!-- form -->
+@section('content')
+    <!-- End form -->  
       <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
         <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
         <span class="w3-right w3-opacity">1 min</span>

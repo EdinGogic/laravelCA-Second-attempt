@@ -11,5 +11,10 @@ class trendingController extends Controller
     {
         return view('trending');
     }
+	
+	public function create()
+	{
+		return view('layouts.create');
+	}
 
 }

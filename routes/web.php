@@ -23,8 +23,19 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/testhome', 'HomeController@test')->name('testhome');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('main', 'mainController@index')->name('main');
-Route::get('trending', 'trendingController@index')->name('trending');
+//Route::get('trending', 'trendingController@index')->name('trending');
+Route::get('create', 'trendingController@create')->name('create');
 
+Route::get('trending', [
+	'uses' => 'trendingController@index',
+	'as' => 'trending'
+]);
+
+
+Route::post('createpost', [
+	'uses' => 'PostController@postCreatePost',
+	'as' => 'post.create'
+]);
 
 
 Route::resource('products', 'productController');
