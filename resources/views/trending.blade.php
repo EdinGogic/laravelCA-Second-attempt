@@ -24,7 +24,7 @@
 	@include ('layouts.navAuth')
   </div>
 </nav>
-  
+
 
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -34,7 +34,7 @@
 <body class="w3-theme-l5">
 
 <!-- Page Container -->
-<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
   <!-- The Grid -->
   <div class="w3-row">
     <!-- Left Column -->
@@ -49,7 +49,7 @@
 	@include('includes.message-block')
 	<section class="row new-post">
         <div class="col-md-6 col-md-offset-3">
-		
+
             <header><h3>What do you have to say?</h3></header>
             <form action="{{route('post.create')}}" method="post">
                 <div class="form-group">
@@ -67,11 +67,11 @@
         <h4>Posted by: {{$post->user->name}}</h4><br>
         <hr class="w3-clear">
         <p>{{$post->body}}</p>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
+        <a href='#' class="like"> {{Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()== 1 ? 'You like this post already!' : 'Like' : 'Like' }} </a>
+        <a href='#' class="like"> Dislike </a>
 		<br>
 
-<!--       </div> 
+<!--       </div>
 		<p>{{$post->body}}</p>
 		<div class=info>
 //		Posted at {{$post->updated_at}}
@@ -81,11 +81,11 @@
 
 
 
-		
-          <div class="w3-row-padding" style="margin:0 -16px">
 
+<script>
 
-</body>
+    var token = '{{Session::token() }}';
+    var urlLike ='{{route ('like')}}';
 
+</script>
 
-</html>

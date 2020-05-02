@@ -42,6 +42,10 @@ Route::post('createpost', [
 	'as' => 'post.create'
 ]);
 
+Route::post('like', [
+    'uses' => 'PostController@postLikePost',
+    'as' => 'like'
+]);
 
 Route::resource('products', 'productController');
 

@@ -1,32 +1,43 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+var postId = 0;
+var postBodyElement = null;
 
-require('./bootstrap');
+$('.post').find('.interaction').find('.edit').on('click', function (event) {
+    event.preventDefault();
 
-window.Vue = require('vue');
+    postBodyElement = event.target.parentNode.parentNode.childNodes[1];
+    var postBody = postBodyElement.textContent;
+    postId = event.target.parentNode.parentNode.dataset['postid'];
+    $('#post-body').val(postBody);
+    $('#edit-modal').modal();
+});
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+$('#modal-save').on('click', function () {
+    $.ajax({
+        method: 'POST',
+        url: urlEdit,
+        data: {body: $('#post-body').val(), postId: postId, _token: token}
+    })
+        .done(function (msg) {
+            $(postBodyElement).text(msg['new_body']);
+            $('#edit-modal').modal('hide');
+        });
+});
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-const app = new Vue({
-    el: '#app',
+$('.like').on('click', function(event) {
+    event.preventDefault();
+    postId = event.target.parentNode.parentNode.dataset['postid'];
+    var isLike = event.target.previousElementSibling == null;
+    $.ajax({
+        method: 'POST',
+        url: urlLike,
+        data: {isLike: isLike, postId: postId, _token: token}
+    })
+        .done(function() {
+            event.target.innerText = isLike ? event.target.innerText == 'Like' ? 'You like this post' : 'Like' : event.target.innerText == 'Dislike' ? 'You don\'t like this post' : 'Dislike';
+            if (isLike) {
+                event.target.nextElementSibling.innerText = 'Dislike';
+            } else {
+                event.target.previousElementSibling.innerText = 'Like';
+            }
+        });
 });
