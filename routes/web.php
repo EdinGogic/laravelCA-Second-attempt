@@ -42,11 +42,21 @@ Route::post('createpost', [
 	'as' => 'post.create'
 ]);
 
-Route::post('like', [
-    'uses' => 'PostController@postLikePost',
-    'as' => 'like'
+
+Route::get('products/displaygrid', [
+    'uses' => 'productController@displaygrid',
+    'as' => 'products.displaygrid',
+
 ]);
 
+Route::post('count', [
+    'uses' => 'PostController@getPostCount',
+    'as' => 'post.count'
+]);
+Route::get('scorders/checkout', 'scorderController@checkout')->name('scorders.checkout');
+Route::post('scorders/placeorder', 'scorderController@placeorder')->name('scorders.placeorder');
+Route::get('products/additem/{id}', 'productController@additem')->name('products.additem');
+Route::get('products/emptycart', 'productController@emptycart')->name('products.emptycart');
 Route::resource('products', 'productController');
 
-Route::resource('categories', 'categoryController');
+

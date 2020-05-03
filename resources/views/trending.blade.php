@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-
-@yield('nav')
+@extends('layouts.menu')
+@section('content')
 <head>
 <title>Burb</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 
@@ -18,8 +16,7 @@
       <a class="navbar-brand" href="{{ route('main') }}">Burb.com</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="{{ route('trending') }}">Community Posts</a></li>
-      <li><a href="#">Products</a></li>
+      <li><a href="{{ route('products.displaygrid') }}">Products</a></li>
     </ul>
 	@include ('layouts.navAuth')
   </div>
@@ -61,31 +58,19 @@
         </div>
     </section>
 	@foreach($posts as $post)
-		<article class="post">
+		<article class="post" data-postid="{{ $post->id }}}">
 		<div class="w3-white w3-round"><br>
 		<span class="w3-right w3-opacity">Posted at {{$post->updated_at}}</span>
         <h4>Posted by: {{$post->user->name}}</h4><br>
         <hr class="w3-clear">
         <p>{{$post->body}}</p>
-        <a href='#' class="like"> {{Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()== 1 ? 'You like this post already!' : 'Like' : 'Like' }} </a>
-        <a href='#' class="like"> Dislike </a>
 		<br>
-
-<!--       </div>
-		<p>{{$post->body}}</p>
-		<div class=info>
-//		Posted at {{$post->updated_at}}
-		</div>
-	</article>
--->	@endforeach
+        </div>
+        </article>
+--
+@endforeach
 
 
 
 
-<script>
-
-    var token = '{{Session::token() }}';
-    var urlLike ='{{route ('like')}}';
-
-</script>
 
