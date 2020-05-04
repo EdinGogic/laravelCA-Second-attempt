@@ -1,7 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.menu')
 
 @section('content')
     <section class="content-header">
+
         <h1>
             Product
         </h1>

@@ -10,9 +10,18 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 use Session;
+use DB;
+
 
 class productController extends AppBaseController
 {
+    /** @var  productRepository */
+    private $productRepository;
+
+    public function __construct(productRepository $productRepo)
+    {
+        $this->productRepository = $productRepo;
+    }
     public function displayGrid(Request $request)
     {
         $products=\App\Models\Product::all();
@@ -33,6 +42,15 @@ class productController extends AppBaseController
         }
         return view('products.displaygrid')->with('products',$products)->with('totalItems',$totalItems);
     }
+
+    public function emptycart()
+    {
+        if (Session::has('cart')) {
+            Session::forget('cart');
+        }
+        return Response::json(['success'=>true],200);
+    }
+
     public function additem($productid)
     {
         if (Session::has('cart')) {
@@ -50,15 +68,130 @@ class productController extends AppBaseController
         Session::put('cart', $cart);
         return Response::json(['success'=>true,'total'=>$cart[$productid]],200);
     }
-    public function emptycart()
+
+    /**
+     * Display a listing of the product.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function index(Request $request)
     {
-        if (Session::has('cart')) {
-            Session::forget('cart');
-        }
-        return Response::json(['success'=>true],200);
+        $products = $this->productRepository->all();
+
+        return view('products.index')
+            ->with('products', $products);
     }
 
+    /**
+     * Show the form for creating a new product.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('products.create');
+    }
 
+    /**
+     * Store a newly created product in storage.
+     *
+     * @param CreateproductRequest $request
+     *
+     * @return Response
+     */
+    public function store(CreateproductRequest $request)
+    {
+        $input = $request->all();
+
+        $product = $this->productRepository->create($input);
+
+        Flash::success('Product saved successfully.');
+
+        return redirect(route('products.index'));
+    }
+
+    /**
+     * Display the specified product.
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
+        $product = $this->productRepository->find($id);
+
+        if (empty($product)) {
+            Flash::error('Product not found');
+
+            return redirect(route('products.index'));
+        }
+
+        return view('products.show')->with('product', $product);
+    }
+
+    /**
+     * Show the form for editing the specified product.
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $product = $this->productRepository->find($id);
+
+        if (empty($product)) {
+            Flash::error('Product not found');
+
+            return redirect(route('products.index'));
+        }
+
+        return view('products.edit')->with('product', $product);
+    }
+
+    /**
+     * Update the specified product in storage.
+     *
+     * @param int $id
+     * @param UpdateproductRequest $request
+     *
+     * @return Response
+     */
+    public function update($id, UpdateproductRequest $request)
+    {
+        $product = $this->productRepository->find($id);
+
+        if (empty($product)) {
+            Flash::error('Product not found');
+
+            return redirect(route('products.index'));
+        }
+
+        $product = $this->productRepository->update($request->all(), $id);
+
+        Flash::success('Product updated successfully.');
+
+        return redirect(route('products.index'));
+    }
+
+    /**
+     * Remove the specified product from storage.
+     *
+     * @param int $id
+     *
+     * @throws \Exception
+     *
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        DB::table('product')->where('id',$id)->delete();
+        return redirect (route('products.index'));
+
+    }
 
 
 }

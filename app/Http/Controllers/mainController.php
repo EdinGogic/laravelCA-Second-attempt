@@ -9,7 +9,16 @@ class MainController extends Controller
 
     public function index()
     {
-        return view('welcome');
+
+        $users =User::orderBy('created_at', 'desc')->get();
+        return view('home')->with('users', $users);
+
+    }
+
+    public function count()
+    {
+        $count = User::count();
+        return view('layouts.admin')->with(['total'=>$count]);
     }
 
 

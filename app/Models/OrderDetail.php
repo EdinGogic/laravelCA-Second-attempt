@@ -19,6 +19,8 @@ class OrderDetail extends Model
         'productid',
         'orderid',
         'quantity',
+        'name',
+        'address',
         'subtotal',
 		'created_at',
 		'updated_at',
@@ -39,6 +41,9 @@ class OrderDetail extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
 		'deleted_at' => 'datetime',
+        'name' => 'varchar',
+        'address' => 'varchar',
+
     ];
 
     /**
@@ -47,6 +52,7 @@ class OrderDetail extends Model
      * @var array
      */
     public static $rules = [
+
 
     ];
 }

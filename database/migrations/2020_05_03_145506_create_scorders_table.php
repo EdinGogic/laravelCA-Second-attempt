@@ -16,10 +16,11 @@ class CreateScordersTable extends Migration
         Schema::create('scorders', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->timestamps();
-            $table->timestamps();
-            $table->timestamps();
-            $table->timestamps();
+            $table->integer('user_id');
+            $table->text('cart');
+            $table->text('address');
+            $table->string('name');
+            $table->string('payment_id');
         });
     }
 

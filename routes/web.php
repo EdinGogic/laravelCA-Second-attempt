@@ -20,9 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/orders', 'HomeController@orders')->name('orders');
 Route::get('/testhome', 'HomeController@test')->name('testhome');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('main', 'mainController@index')->name('main');
+Route::get('welcome', 'HomeController@welcome')->name('main');
 //Route::get('trending', 'trendingController@index')->name('trending');
 Route::get('create', 'trendingController@create')->name('create');
 
@@ -34,12 +35,18 @@ Route::get('create', 'trendingController@create')->name('create');
 Route::get('trending', [
     'uses' => 'postController@getDashboard',
     'as' => 'trending',
+    'middleware' => 'auth'
 
 ]);
 
 Route::post('createpost', [
 	'uses' => 'PostController@postCreatePost',
 	'as' => 'post.create'
+]);
+
+Route::post('orders', [
+    'uses' => 'HomeController@orders',
+    'as' => 'layouts.orders'
 ]);
 
 
@@ -49,6 +56,42 @@ Route::get('products/displaygrid', [
 
 ]);
 
+Route::get('products/index', [
+    'uses' => 'productController@index',
+    'as' => 'products.index',
+
+])->middleware('auth');;
+Route::get('products/create', [
+    'uses' => 'productController@create',
+    'as' => 'products.create',
+
+]);
+Route::delete('products/destroy{id}', 'productController@destroy')->name('products.destroy');
+
+
+Route::get('products/show', [
+    'uses' => 'productController@show',
+    'as' => 'products.show',
+
+]);
+
+Route::get('products/edit/{id}}', [
+    'uses' => 'productController@edit',
+    'as' => 'products.edit',
+
+]);
+Route::post('products/store', [
+    'uses' => 'productController@store',
+    'as' => 'products.store',
+
+]);
+Route::patch('products/update/{request}', [
+    'uses' => 'productController@update',
+    'as' => 'products.update',
+
+]);
+
+
 Route::post('count', [
     'uses' => 'PostController@getPostCount',
     'as' => 'post.count'
@@ -57,6 +100,9 @@ Route::get('scorders/checkout', 'scorderController@checkout')->name('scorders.ch
 Route::post('scorders/placeorder', 'scorderController@placeorder')->name('scorders.placeorder');
 Route::get('products/additem/{id}', 'productController@additem')->name('products.additem');
 Route::get('products/emptycart', 'productController@emptycart')->name('products.emptycart');
-Route::resource('products', 'productController');
+
+
+
+//Route::resource('products', 'productController');
 
 

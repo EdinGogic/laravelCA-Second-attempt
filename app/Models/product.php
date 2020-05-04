@@ -7,18 +7,20 @@ use Illuminate\Database\Eloquent\Model as Model;
 /**
  * Class product
  * @package App\Models
- * @version April 26, 2020, 6:43 pm UTC
+ * @version May 3, 2020, 4:00 pm UTC
  *
+ * @property \Illuminate\Database\Eloquent\Collection $orderdetails
  * @property string $name
- * @property string $weight
- * @property number $Price
- * @property integer $categoryID
+ * @property string $description
+ * @property string $colour
+ * @property number $price
+ * @property string $image
  */
 class product extends Model
 {
 
     public $table = 'product';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -27,9 +29,10 @@ class product extends Model
 
     public $fillable = [
         'name',
-        'weight',
-        'Price',
-        'categoryID'
+        'description',
+        'colour',
+        'price',
+        'image'
     ];
 
     /**
@@ -40,9 +43,10 @@ class product extends Model
     protected $casts = [
         'id' => 'integer',
         'name' => 'string',
-        'weight' => 'string',
-        'Price' => 'float',
-        'categoryID' => 'integer'
+        'description' => 'string',
+        'colour' => 'string',
+        'price' => 'float',
+        'image' => 'string'
     ];
 
     /**
@@ -51,8 +55,15 @@ class product extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+
+    public function orderdetails()
+    {
+        return $this->hasMany(\App\Models\Orderdetail::class, 'productid');
+    }
+**/
 }

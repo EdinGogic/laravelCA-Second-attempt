@@ -17,18 +17,31 @@
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->description }}</td>
                 <td>{{ $product->colour }}</td>
+
                 <td><div class="price">{{ $product->price }}</div></td>
                 <td> <input size="3" style="border:none" class="qty" type="text" name="quantity[]" readonly value="<?php echo $lineitem['qty'] ?>"> </td>
-                <td>
-                    <button type="button" class="btn btn-default add"><span class="glyphicon glyphicon-plus"/></button>
-                    <button type="button" class="btn btn-default subtract"><span class="glyphicon glyphicon-minus"/></button>
-                    <button type="button" class="btn btn-default value="remove" onClick="$(this).closest('tr').remove();"><span class="glyphicon glyphicon-remove"/></button>
+
+
+
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                 </td>
+            </tr>
+
+
                 @php $ttlQty = $ttlQty + $lineitem['qty']; $ttlCost = $ttlCost + ($product->price*$lineitem['qty']);
                 @endphp
             </tr>
         @endforeach
+
         </tbody>
     </table>
+
+    <form method = "post">
+        <input type ="text" id="name" class="form-control" name = "name" placeholder="Enter Your Name">
+        <input type ="text" id="address" class="form-control" name ="address" placeholder="Enter Your Address">
+
     <button type="submit" class="btn btn-primary">Submit</button> {{ Form::close() }}
 @endsection

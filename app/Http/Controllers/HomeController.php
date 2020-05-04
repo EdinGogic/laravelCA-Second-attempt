@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Models\OrderDetail;
 
 class HomeController extends Controller
 {
@@ -23,10 +25,26 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $users =User::orderBy('created_at', 'desc')->get();
+        return view('home')->with('users', $users);
+
+
     }
 	public function test()
 	{
 		return view ('testhome');
 	}
+
+    public function orders()
+    {
+        $orders =OrderDetail::get();
+        return view('layouts.orders')->with('orders', $orders);
+    }
+
+    public function welcome()
+    {
+        return view('welcome');
+    }
+
+
 }

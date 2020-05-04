@@ -80,7 +80,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('dist/img/logo.png') }}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset('dist/img/logo1.png') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="{{ route('main') }}" class="d-block">Return To live Site</a>
@@ -104,17 +104,34 @@
 
           <li class="nav-header">Utilities</li>
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
+            <a href="{{ route('products.index') }}" class="nav-link">
+                <i class="far fa-edit"></i>
               <p>
-                Calendar
+                Edit products
                 <span class="badge badge-info right">2</span>
               </p>
             </a>
           </li>
-          
+            <li class="nav-item">
+            <a href="{{ route('layouts.orders') }}" class="nav-link">
+                <i class="fas fa-eye"></i>
+                <p>
+                    View Orders
+                    <span class="badge badge-info right">2</span>
+                </p>
+            </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('home') }}" class="nav-link">
+                    <i class="fas fa-eye"></i>
+                    <p>
+                        View Employees
+                        <span class="badge badge-info right">2</span>
+                    </p>
+                </a>
+            </li>
             </ul>
-  
+
           <li class="nav-header">System</li>
 
 		  <a class="nav-link" href="{{ route('logout') }}"
@@ -139,13 +156,7 @@
 	@yield('content')
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.4
-    </div>
-  </footer>
+
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

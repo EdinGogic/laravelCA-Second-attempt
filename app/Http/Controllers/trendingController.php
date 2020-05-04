@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class trendingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -14,7 +18,7 @@ class trendingController extends Controller
 		return view('trending');
 
     }
-	
+
 	public function create()
 	{
 		return view('layouts.create');

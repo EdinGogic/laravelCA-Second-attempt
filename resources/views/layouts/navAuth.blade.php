@@ -4,6 +4,7 @@
     <li><a href="{{ route('login') }}">Login</a></li>
 	@else
         <li class="active"><a href="{{ route('trending') }}">Community Posts</a></li>
+        <li class="active"><a href="{{ route('home') }}">Management Panel</a></li>
     <li><a href="{{ route('logout') }}">Logout</a></li>
 @endif
 </ul>

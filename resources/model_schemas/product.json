@@ -24,7 +24,7 @@
         "inView": true
     },
     {
-        "name": "weight",
+        "name": "description",
         "dbType": "string,30:nullable",
         "htmlType": "text",
         "validations": null,
@@ -36,8 +36,20 @@
         "inView": true
     },
     {
-        "name": "Price",
-        "dbType": "decimal,10,0",
+        "name": "colour",
+        "dbType": "string,30:nullable",
+        "htmlType": "text",
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "price",
+        "dbType": "decimal,18,3",
         "htmlType": null,
         "validations": null,
         "searchable": true,
@@ -48,9 +60,9 @@
         "inView": true
     },
     {
-        "name": "categoryID",
-        "dbType": "integer,false",
-        "htmlType": null,
+        "name": "image",
+        "dbType": "string,30:nullable",
+        "htmlType": "text",
         "validations": null,
         "searchable": true,
         "fillable": true,
@@ -94,5 +106,9 @@
         "inForm": false,
         "inIndex": false,
         "inView": false
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Orderdetail,productid"
     }
 ]

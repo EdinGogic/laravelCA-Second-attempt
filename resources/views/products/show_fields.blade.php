@@ -4,21 +4,27 @@
     <p>{{ $product->name }}</p>
 </div>
 
-<!-- Weight Field -->
+<!-- Description Field -->
 <div class="form-group">
-    {!! Form::label('weight', 'Weight:') !!}
-    <p>{{ $product->weight }}</p>
+    {!! Form::label('description', 'Description:') !!}
+    <p>{{ $product->description }}</p>
+</div>
+
+<!-- Colour Field -->
+<div class="form-group">
+    {!! Form::label('colour', 'Colour:') !!}
+    <p>{{ $product->colour }}</p>
 </div>
 
 <!-- Price Field -->
 <div class="form-group">
-    {!! Form::label('Price', 'Price:') !!}
-    <p>{{ $product->Price }}</p>
+    {!! Form::label('price', 'Price:') !!}
+    <p>{{ $product->price }}</p>
 </div>
 
-<!-- Categoryid Field -->
+<!-- Image Field -->
 <div class="form-group">
-    {!! Form::label('categoryID', 'Categoryid:') !!}
-    <p>{{ $product->categoryID }}</p>
+    {!! Form::label('image', 'Image:') !!}
+    <p>{{ $product->image }}</p>
 </div>
 

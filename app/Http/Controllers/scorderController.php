@@ -6,7 +6,8 @@ use App\Http\Requests\CreateproductRequest;
 use App\Http\Requests\UpdateproductRequest;
 use App\Repositories\productRepository;
 use App\Http\Controllers\AppBaseController;
-use App\Models\Scorder;
+use App\Models\OrderDetail;
+use App\Repositories\orderDetailsRepository;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -30,41 +31,27 @@ class ScorderController extends AppBaseController
             Flash::error("There are no items in your cart");
             return redirect(route('products.displaygrid'));
         }
+
     }
-    public function placeorder(Request $request)
-    {
-        $thisOrder = new \App\Models\Scorder();
-        $thisOrder->orderdate = (new \DateTime())->format("Y-m-d H:i:s");
-        $thisOrder->save();
-        $orderID = $thisOrder->id;
-        $productids = $request->productid;
-        $quantities = $request->quantity;
-        for($i=0;$i<sizeof($productids);$i++) {
-            $thisOrderDetail = new \App\Models\OrderDetail();
-            $thisOrderDetail->orderid = $orderID;
-            $thisOrderDetail->productid = $productids[$i];
-            $thisOrderDetail->quantity = $quantities[$i];
-            $thisOrderDetail->save();
+
+       public function placeorder(Request $request)
+        {
+            $thisOrder = new \App\Models\OrderDetail();
+            $thisOrder->created_at = (new \DateTime())->format("Y-m-d H:i:s");
+            $thisOrder->productid;
+            $thisOrder->name = $request->input('name');
+            $thisOrder->address = $request->input('address');
+
+
+            $thisOrder->save();
+
+
+
+
+            Session::forget('cart');
+            Flash::success("Your Order has Been Placed");
+            return redirect(route('products.displaygrid'));
         }
-        Session::forget('cart');
-        Flash::success("Your Order has Been Placed");
-        return redirect(route('products.displaygrid'));
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
