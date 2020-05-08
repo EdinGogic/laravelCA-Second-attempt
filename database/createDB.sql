@@ -28,7 +28,14 @@ CREATE TABLE IF NOT EXISTS `category` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Data exporting was unselected.
+-- Dumping data for table laravelproject.category: ~4 rows (approximately)
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` (`id`, `name`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 'Shoes', NULL, NULL, NULL),
+	(2, 'Clothes', NULL, NULL, NULL),
+	(3, 'Accessories', NULL, NULL, NULL),
+	(4, 'Hats', NULL, NULL, NULL);
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
 
 -- Dumping structure for table laravelproject.failed_jobs
 DROP TABLE IF EXISTS `failed_jobs`;
@@ -42,7 +49,9 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table laravelproject.failed_jobs: ~0 rows (approximately)
+/*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
 
 -- Dumping structure for table laravelproject.migrations
 DROP TABLE IF EXISTS `migrations`;
@@ -53,7 +62,15 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table laravelproject.migrations: ~5 rows (approximately)
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+	(1, '2014_10_12_000000_create_users_table', 1),
+	(2, '2014_10_12_100000_create_password_resets_table', 1),
+	(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+	(4, '2020_05_02_135009_create_posts_table', 1),
+	(5, '2020_05_02_203054_create_likes_table', 2);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 -- Dumping structure for table laravelproject.orderdetail
 DROP TABLE IF EXISTS `orderdetail`;
@@ -74,7 +91,18 @@ CREATE TABLE IF NOT EXISTS `orderdetail` (
   CONSTRAINT `orderdetail_ibfk_2` FOREIGN KEY (`orderid`) REFERENCES `scorders` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Data exporting was unselected.
+-- Dumping data for table laravelproject.orderdetail: ~8 rows (approximately)
+/*!40000 ALTER TABLE `orderdetail` DISABLE KEYS */;
+INSERT INTO `orderdetail` (`id`, `productid`, `orderid`, `quantity`, `address`, `created_at`, `updated_at`, `deleted_at`, `name`) VALUES
+	(45, NULL, NULL, NULL, ' Springlawn Heights', '2020-05-03 23:55:45', '2020-05-03 23:55:45', NULL, 'Edin Gogic'),
+	(46, NULL, NULL, NULL, 'Blanchardstown, Dublin', '2020-05-04 00:01:26', '2020-05-04 00:01:26', NULL, 'John Joe'),
+	(47, NULL, NULL, NULL, '18 RoadVille Drive', '2020-05-04 00:09:48', '2020-05-04 00:09:48', NULL, 'Gavin Byrne'),
+	(48, NULL, NULL, NULL, 'Kildare Street', '2020-05-04 00:34:55', '2020-05-04 00:34:55', NULL, 'Amy Joel'),
+	(49, NULL, NULL, NULL, '18 RoadVille Drive', '2020-05-04 00:46:29', '2020-05-04 00:46:29', NULL, 'Test Account'),
+	(50, NULL, NULL, NULL, 'Demo 123', '2020-05-06 19:34:41', '2020-05-06 19:34:41', NULL, 'Edin Demo'),
+	(51, NULL, NULL, NULL, 'demo2@two.ie', '2020-05-06 20:03:28', '2020-05-06 20:03:28', NULL, 'Demo TWO'),
+	(52, NULL, NULL, NULL, 'Demo 123 demo street', '2020-05-06 20:07:06', '2020-05-06 20:07:06', NULL, 'Demo three');
+/*!40000 ALTER TABLE `orderdetail` ENABLE KEYS */;
 
 -- Dumping structure for table laravelproject.password_resets
 DROP TABLE IF EXISTS `password_resets`;
@@ -85,7 +113,9 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table laravelproject.password_resets: ~0 rows (approximately)
+/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 
 -- Dumping structure for table laravelproject.posts
 DROP TABLE IF EXISTS `posts`;
@@ -98,7 +128,27 @@ CREATE TABLE IF NOT EXISTS `posts` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table laravelproject.posts: ~17 rows (approximately)
+/*!40000 ALTER TABLE `posts` DISABLE KEYS */;
+INSERT INTO `posts` (`id`, `created_at`, `updated_at`, `body`, `user_id`) VALUES
+	(1, '2020-05-02 14:32:34', '2020-05-02 14:32:34', 'ff', 1),
+	(2, '2020-05-02 14:32:57', '2020-05-02 14:32:57', 'Hello World', 1),
+	(3, '2020-05-02 15:24:26', '2020-05-02 15:24:26', 'Hi', 1),
+	(4, '2020-05-02 15:24:40', '2020-05-02 15:24:40', 'f', 1),
+	(5, '2020-05-02 15:33:26', '2020-05-02 15:33:26', 'f', 1),
+	(6, '2020-05-02 16:42:55', '2020-05-02 16:42:55', 'Test post 6!', 1),
+	(7, '2020-05-02 20:00:21', '2020-05-02 20:00:21', 'Hello', 1),
+	(8, '2020-05-03 12:24:46', '2020-05-03 12:24:46', 'New Post!', 1),
+	(9, '2020-05-03 15:13:53', '2020-05-03 15:13:53', 'hi', 1),
+	(10, '2020-05-03 15:29:36', '2020-05-03 15:29:36', 'l', 1),
+	(11, '2020-05-03 16:09:50', '2020-05-03 16:09:50', 'ji', 1),
+	(12, '2020-05-03 16:19:23', '2020-05-03 16:19:23', 'This is a final test post for the Community posts feed', 1),
+	(13, '2020-05-03 16:26:00', '2020-05-03 16:26:00', 'Hey I\'m test', 2),
+	(14, '2020-05-04 00:10:39', '2020-05-04 00:10:39', 'I\'m finally finished the project!', 2),
+	(15, '2020-05-04 00:43:43', '2020-05-04 00:43:43', 'Final Post', 4),
+	(16, '2020-05-06 19:38:51', '2020-05-06 19:38:51', 'Just added new product @ 2 euro', 5),
+	(17, '2020-05-06 20:13:08', '2020-05-06 20:13:08', 'Example', 6);
+/*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 
 -- Dumping structure for table laravelproject.product
 DROP TABLE IF EXISTS `product`;
@@ -115,7 +165,15 @@ CREATE TABLE IF NOT EXISTS `product` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Data exporting was unselected.
+-- Dumping data for table laravelproject.product: ~5 rows (approximately)
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` (`id`, `name`, `description`, `colour`, `price`, `image`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(18, 'Nike Revolution demo', 'Running Shoes', 'Black', 75.000, 'black.jpeg', '2020-05-04 00:06:20', '2020-05-06 19:37:35', NULL),
+	(20, 'Nike Cha', 'Trainers', 'Grey', 75.000, 'grey.jpeg', '2020-05-04 00:07:02', '2020-05-04 00:07:02', NULL),
+	(21, 'Nike Demo', 'Football Boots', 'Pink', 65.000, 'pink.jpeg', '2020-05-04 00:07:36', '2020-05-06 20:12:25', NULL),
+	(22, 'Nike 270', 'Trainers', 'Red', 95.000, 'red.jpeg', '2020-05-04 00:07:55', '2020-05-04 00:07:55', NULL),
+	(24, 'T-Shirt', 'Running Shoes', 'Blue', 3.000, 'black.jpeg', '2020-05-06 20:12:41', '2020-05-06 20:12:41', NULL);
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
 
 -- Dumping structure for table laravelproject.scorders
 DROP TABLE IF EXISTS `scorders`;
@@ -135,7 +193,9 @@ CREATE TABLE IF NOT EXISTS `scorders` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Data exporting was unselected.
+-- Dumping data for table laravelproject.scorders: ~0 rows (approximately)
+/*!40000 ALTER TABLE `scorders` DISABLE KEYS */;
+/*!40000 ALTER TABLE `scorders` ENABLE KEYS */;
 
 -- Dumping structure for table laravelproject.users
 DROP TABLE IF EXISTS `users`;
@@ -152,7 +212,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table laravelproject.users: ~6 rows (approximately)
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+	(1, 'Edin Gogic', 'edingogic97@gmail.com', NULL, '$2y$10$UNLFCh/L4rXJVd2u0aSjreI1m6p/PexKsVnqo5ZIH5Jw0aul5tcCq', 'UzBwTc0TJf3iIziZCndqHVrEal0uFFd9dBbt3LHALxGuPygrurNsT3qF1Pac', '2020-05-02 14:25:10', '2020-05-02 14:25:10'),
+	(2, 'Test', 'test@test.ie', NULL, '$2y$10$j2jhvOcVFjDERVk9XibWfOj.JRNZgb2qt6Xrfu6lBf1ZzI4XmI5TW', NULL, '2020-05-03 16:25:37', '2020-05-03 16:25:37'),
+	(3, 'James Kelly', 'james@kelly.ie', NULL, '$2y$10$/7oa8MTxEA8DJlG6gtxJtOh4xOR67o2dFaWuevLVU9q9nLKor74Ne', NULL, '2020-05-04 00:36:07', '2020-05-04 00:36:07'),
+	(4, 'Lara Dunne', 'lara@dunne.ie', NULL, '$2y$10$qXEmpGumotrub5lTdtfoKubWc79bwc1bemyeLAMhroSzeRG/3zdZq', NULL, '2020-05-04 00:36:25', '2020-05-04 00:36:25'),
+	(5, 'Demo Account', 'Demo@demo.ie', NULL, '$2y$10$Oc6o2OZ02p9k8JnvoFCZXeEuTo5vnGsYcbUPlmYfYxpoyi5mIUCkm', NULL, '2020-05-06 19:35:23', '2020-05-06 19:35:23'),
+	(6, 'demothree', 'dem3@dem.ie', NULL, '$2y$10$RxTupViVmLXc64PIn/49e.XjelTf6KKQm/Rl0iRz2YNz/kZ5sKD06', NULL, '2020-05-06 20:07:31', '2020-05-06 20:07:31');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
